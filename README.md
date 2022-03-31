@@ -28,10 +28,11 @@ $ npm run test
 
 Locally application is running on `http://127.0.0.1:3000`
 
-- `GET /forecast/:city`
-  URL Params: `city: string` -> any city name
+### `GET /forecast/:city`
+  
+URL Params: `city: string` -> any city name
 
-  ✅ 200 - Returns random forecast
+✅ 200 - Returns random forecast
 ```json
   {
     "success":true,
@@ -43,7 +44,8 @@ Locally application is running on `http://127.0.0.1:3000`
     }
   }
 ```
-  ❌400 - Bad request - 30% of requests will be failed with this error
+  
+❌400 - Bad request - 30% of requests will be failed with this error
 ```json
   {
     "success":false,
@@ -52,9 +54,11 @@ Locally application is running on `http://127.0.0.1:3000`
   }
 ```
 
-- `POST /forecast`
-  BODY Params: `city: string` -> allowed city name
-  ✅ 200 - Returns random forecast for city
+### `POST /forecast`
+  
+BODY Params: `city: string` -> allowed city name
+  
+✅ 200 - Returns random forecast for city
 ```json
   {
     "success":true,
@@ -66,7 +70,8 @@ Locally application is running on `http://127.0.0.1:3000`
     }
   }
  ```
-  ❌404 - Not Found - if provided city not found
+  
+❌404 - Not Found - if provided city not found
 ```json
   {
       "success": false,
