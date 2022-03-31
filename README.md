@@ -1,23 +1,77 @@
-# Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
-This project was bootstrapped with Fastify-CLI.
+# Forecast
 
-## Available Scripts
+Simple application for university.
 
-In the project directory, you can run:
+## Development
 
-### `npm run dev`
+Application is written on [Fastify](https://www.fastify.io/docs/latest/).
 
-To start the app in dev mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Install dependencies
 
-### `npm start`
+```bash
+$ npm i
+```
 
-For production mode
+2. Run service in development mode with live-reload
 
-### `npm run test`
+```bash
+$ npm run dev
+```
 
 Run the test cases.
 
-## Learn More
+```bash
+$ npm run test
+```
 
-To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
+## API
+
+Locally application is running on `http://127.0.0.1:3000`
+
+- `GET /forecast/:city`
+  URL Params: `city: string` -> any city name
+
+  ✅ 200 - Returns random forecast
+```json
+  {
+    "success":true,
+    "data": {
+      "city":"Tartu",
+      "temperature":3,
+      "wind":2,
+      "precipitation":"🌦️"
+    }
+  }
+```
+  ❌400 - Bad request - 30% of requests will be failed with this error
+```json
+  {
+    "success":false,
+    "data":null,
+    "error":"Something went wrong. Please try again"
+  }
+```
+
+- `POST /forecast`
+  BODY Params: `city: string` -> allowed city name
+  ✅ 200 - Returns random forecast for city
+```json
+  {
+    "success":true,
+    "data": {
+      "city":"Tartu",
+      "temperature":3,
+      "wind":2,
+      "precipitation":"🌦️"
+    }
+  }
+ ```
+  ❌404 - Not Found - if provided city not found
+```json
+  {
+      "success": false,
+      "data": null,
+      "error": "City not found in the list. Allowed cities are: Tartu, Tallinn, Berlin, Barcelona, Paris, Copenhagen, Helsinki, Riga"
+  }
+```
+

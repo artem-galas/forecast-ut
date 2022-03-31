@@ -3,31 +3,29 @@ import {
     ForecastReplySchema,
     ForecastByCityParamsSchema,
     ForecastByCityRequestDto,
-    formatResponse
+    formatError, allowedCityList, formatResponse
 } from '../../mappers/forecast.mapper';
 import * as service from '../../services/forecast.service';
 
-export default function getForecast(fastify: FastifyInstance): RouteOptions {
+export default function postCity(fastify: FastifyInstance): RouteOptions {
     return {
-        method: 'GET',
-        url: '/forecast/:city',
+        method: 'POST',
+        url: '/forecast',
         schema: {
-            params: ForecastByCityParamsSchema,
+            body: ForecastByCityParamsSchema,
             response: {
                 '2xx': ForecastReplySchema
             }
         },
         handler: async (request, reply) => {
-            const {params} = request;
-            const city = (params as ForecastByCityRequestDto).city
+            const {body} = request;
+            const city = (body as ForecastByCityRequestDto).city
 
-            const random = Math.ceil(Math.random() * 100);
-
-            if (random >= 30) {
+            if (allowedCityList.includes(city.toLowerCase().trim())) {
                 return formatResponse(service.getForecast(city));
             }
 
-            return reply.code(400).send(new Error('Something went wrong. Please try again'))
+            return reply.code(404).send(new Error(formatError()))
         }
     }
 }
