@@ -2,6 +2,7 @@ import {Static, Type} from '@sinclair/typebox'
 import {apiResponseSchema} from './api.mapper';
 
 export const ForecastByCityParamsSchema = Type.Object({city: Type.String()});
+export const ForecastByCityQuerySchema = Type.Object({delay: Type.Optional(Type.Number({minimum: 0}))});
 
 export const ForecastSchema = Type.Object({
     city: Type.String(),
@@ -12,6 +13,7 @@ export const ForecastSchema = Type.Object({
 
 export type ForecastDto = Static<typeof ForecastSchema>;
 export type ForecastByCityRequestDto = Static<typeof ForecastByCityParamsSchema>;
+export type ForecastByCityQuery = Static<typeof ForecastByCityQuerySchema>;
 
 export const ForecastReplySchema = apiResponseSchema(ForecastSchema);
 
