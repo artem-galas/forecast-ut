@@ -80,3 +80,24 @@ BODY Params: `city: string` -> allowed city name
   }
 ```
 
+## WebSocket `/ws-forecast`
+
+**NOTE:** 
+- Response is **stringified** JSON
+- Request should be **stringified** before sending
+
+
+✅ 200 - Returns random forecast for city, every 3000ms
+
+**MESSAGE** params: `{id: 0, city: Tartu}`
+
+```json
+{
+  "id": 0,
+  "city": "Tartu",
+  "temperature": 3,
+  "wind": 2,
+  "precipitation": "🌦️"
+}
+```
+
