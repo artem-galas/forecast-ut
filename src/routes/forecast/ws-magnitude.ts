@@ -8,7 +8,7 @@ export default function wsMagnitude(conn: SocketStream, req: FastifyRequest) {
     const interval = setInterval(() => {
         const magnitude = service.getMagnitude(city);
         conn.socket.send(JSON.stringify(magnitude));
-    }, 3000);
+    }, 2000);
 
     conn.socket.on("close", () => {
         clearInterval(interval);
