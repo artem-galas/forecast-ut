@@ -80,3 +80,15 @@ BODY Params: `city: string` -> allowed city name
   }
 ```
 
+### WebSocket `/magnitude/:city`
+
+**NOTE:**
+- Response is **stringified** JSON
+
+✅ 200 - Returns random magnitude for city, every 2000ms
+```json
+  {
+    "city": "Tartu",
+    "magnitude": 4.6
+  }
+```
