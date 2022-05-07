@@ -80,24 +80,15 @@ BODY Params: `city: string` -> allowed city name
   }
 ```
 
-## WebSocket `/ws-forecast`
+### WebSocket `/magnitude/:city`
 
-**NOTE:** 
+**NOTE:**
 - Response is **stringified** JSON
-- Request should be **stringified** before sending
 
-
-✅ 200 - Returns random forecast for city, every 3000ms
-
-**MESSAGE** params: `{id: 0, city: Tartu}`
-
+✅ 200 - Returns random magnitude for city, every 2000ms
 ```json
-{
-  "id": 0,
-  "city": "Tartu",
-  "temperature": 3,
-  "wind": 2,
-  "precipitation": "🌦️"
-}
+  {
+    "city": "Tartu",
+    "magnitude": 4.6
+  }
 ```
-
