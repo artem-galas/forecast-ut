@@ -35,7 +35,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
     options: opts
   })
 
-  fastify.register(require('./routes/forecast'));
+  fastify.register(require('./routes'));
 
 };
 
