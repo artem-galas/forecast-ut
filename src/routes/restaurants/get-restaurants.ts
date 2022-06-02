@@ -6,7 +6,7 @@ import {RestaurantListReplySchema} from '../../mappers/restaurants.mapper';
 export default function getBooks(fastify: FastifyInstance): RouteOptions {
     return {
         method: 'GET',
-        url: '/',
+        url: '/list',
         schema: {
             response: {
                 '2xx': RestaurantListReplySchema,
