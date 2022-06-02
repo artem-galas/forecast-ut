@@ -16,4 +16,4 @@ export const BookRequestSchema = Type.Object({
 export const RestaurantListSchema = Type.Array(RestaurantSchema);
 
 export type RestaurantListDto = Static<typeof RestaurantListSchema>;
-export const RestaurantListReplySchema = apiResponseSchema(RestaurantSchema);
+export const RestaurantListReplySchema = apiResponseSchema(RestaurantListSchema);
